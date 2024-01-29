@@ -167,3 +167,21 @@ input[type=text], input[type=date], .btn-submit:focus {
     outline: none;
 }
 
+
+@media only screen and (max-width: 1024px) {
+    .wrapper {
+        margin: 0;
+    }
+
+    .wrapper .container {
+        width: 100%;
+    }
+
+    .list-item {
+        width: 90%;
+    }
+
+    .form {
+        width: 100%;
+    }
+}
