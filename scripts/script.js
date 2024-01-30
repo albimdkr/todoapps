@@ -89,6 +89,7 @@ function loadDataFromStorage() {
   document.dispatchEvent(new Event(RENDER_EVENT));
 }
 
+// function makeTodo
 function makeTodo(todoObject) {
   const { id, task, description, timestamp, isCompleted } = todoObject;
 
