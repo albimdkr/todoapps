@@ -138,3 +138,22 @@ function makeTodo(todoObject) {
   return container;
 }
 
+// function addTodo
+function addTodo() {
+  const textTodo = document.getElementById('title').value;
+  const textDescription = document.getElementById('description').value;
+  const timestamp = document.getElementById('date').value;
+
+  const generatedID = generateId();
+  const todoObject = generateTodoObject(
+    generatedID,
+    textTodo,
+    textDescription,
+    timestamp,
+    false
+  );
+  todos.push(todoObject);
+
+  document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
+}
