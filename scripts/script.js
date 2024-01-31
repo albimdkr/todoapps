@@ -157,3 +157,14 @@ function addTodo() {
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
+
+// function addTaskToCompleted
+function addTaskToCompleted(todoId /* HTMLELement */) {
+  const todoTarget = findTodo(todoId);
+
+  if (todoTarget == null) return;
+
+  todoTarget.isCompleted = true;
+  document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
+}
