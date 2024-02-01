@@ -179,3 +179,13 @@ function removeTaskFromCompleted(todoId /* HTMLELement */) {
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
+
+// function undoTask
+function undoTaskFromCompleted(todoId /* HTMLELement */) {
+  const todoTarget = findTodo(todoId);
+  if (todoTarget == null) return;
+
+  todoTarget.isCompleted = false;
+  document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
+}
