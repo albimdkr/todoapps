@@ -168,3 +168,14 @@ function addTaskToCompleted(todoId /* HTMLELement */) {
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
+
+// function remove task
+function removeTaskFromCompleted(todoId /* HTMLELement */) {
+  const todoTarget = findTodoIndex(todoId);
+
+  if (todoTarget === -1) return;
+
+  todos.splice(todoTarget, 1);
+  document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
+}
