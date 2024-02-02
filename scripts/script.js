@@ -241,3 +241,15 @@ document.addEventListener('DOMContentLoaded', function () {
     loadDataFromStorage();
   }
 });
+
+document.addEventListener(SAVED_EVENT, () => {
+  handleValidationSuccess('Anda telah berhasil!');
+});
+
+function handleValidationSuccess(messageSuccesed) {
+  Swal.fire({
+    title: 'Berhasil',
+    text: messageSuccesed,
+    icon: 'success',
+  });
+}
