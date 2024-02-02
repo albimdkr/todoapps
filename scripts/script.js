@@ -189,3 +189,55 @@ function undoTaskFromCompleted(todoId /* HTMLELement */) {
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
+
+// DOM loaded
+const isDataValid = true;
+document.addEventListener('DOMContentLoaded', function () {
+  const submitForm /* HTMLFormElement */ = document.getElementById('form');
+
+  function validateTitle(title) {
+    return title.trim() !== '';
+  }
+
+  function validateDescription(desc) {
+    return desc.trim() !== '';
+  }
+
+  function validateDate(date) {
+    return date.trim() !== '';
+  }
+
+  function handleValidationFailure(messageFailure) {
+    const inputElement = document.activeElement;
+    inputElement.style.border = '1px solid red';
+    Swal.fire({
+      title: 'Simpan Gagal!',
+      text: messageFailure,
+      icon: 'error',
+    });
+  }
+
+  submitForm.addEventListener('submit', function (event) {
+    const formTitle = document.getElementById('title').value;
+    const formDescription = document.getElementById('description').value;
+    const formDate = document.getElementById('date').value;
+
+    if (!validateTitle(formTitle)) {
+      event.preventDefault();
+      handleValidationFailure('Ulangi! harap isi judul anda');
+    } else if (formDescription.trim() === '') {
+      event.preventDefault();
+      handleValidationFailure('Ulangi! harap isi deskripsi anda');
+    } else if (formDate.trim() === '') {
+      event.preventDefault();
+      handleValidationFailure('Ulangi! harap isi waktu batas anda');
+    } else {
+      event.preventDefault();
+      addTodo();
+    }
+  });
+
+  if (isStorageExist()) {
+    loadDataFromStorage();
+  }
+});
